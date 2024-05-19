@@ -1,0 +1,13 @@
+/* Add vertical margin to the form elements */
+.input-field {
+    margin-bottom: 10px;
+  }
+  
+  /* Add vertical margin to the buttons */
+  button {
+    
+    margin-right: 5px;
+    width: 100px;
+    
+  }
+  

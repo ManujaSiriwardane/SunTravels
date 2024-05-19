@@ -1,0 +1,43 @@
+<!-- component for home page -->
+<div class="container">
+<h1>Sun Travels</h1>
+<div  style="padding-bottom: 20px;">
+  <!-- main image  -->
+<img src="../../assets/main_.png"  alt="Image" class="responsive-image">
+</div>
+
+<!-- 10 recently added contracts to the system -->
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Hotel Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Room Types</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contract of contracts">
+        <td>{{ contract.id }}</td>
+        <td>{{ contract.hotels.hotel_name }}</td>
+        <td>{{ contract.hotels.address }}</td>
+        <td>{{ contract.hotels.city }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let roomType of contract.roomTypes">
+              {{ roomType.type_name }} - Price: {{ roomType.price }}
+            </li>
+          </ul>
+        </td>
+        <td>{{ contract.start_date  }}</td>
+        <td>{{ contract.end_date  }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>

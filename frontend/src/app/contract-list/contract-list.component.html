@@ -1,0 +1,75 @@
+<!-- component for add a contract -->
+<div class="container mt-4">
+    <div class="card" style="background-color:cadetblue;">
+      <div class="card-header">
+        <h2>Add Contract</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-8">
+        <form [formGroup]="mainForm" (ngSubmit)="createContract(mainForm.value)">
+  
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="start_date">Start Date</label>
+              <input type="date" class="form-control" id="start_date" formControlName="start_date" required>
+            </div>
+  
+            <div class="form-group col-md-4">
+              <label for="end_date">End Date</label>
+              <input type="date" class="form-control" id="end_date" formControlName="end_date" required>
+            </div>
+          </div>
+  
+          <div class="form-group col-md-8">
+            <label for="hotel_name">Hotel Name</label>
+            <input type="text" class="form-control" id="hotel_name" formControlName="hotel_name" placeholder="Aryana Hotel" required>
+          </div>
+  
+          <div class="form-group col-md-8">
+            <label for="address">Hotel Address</label>
+            <input type="text" class="form-control" id="address" formControlName="address" placeholder="23/1, Base Street, Matara" required>
+          </div>
+  
+          <div class="form-group col-md-8">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" formControlName="city" placeholder="Matara" required>
+          </div>
+  
+          <!-- Form Array for Room Types -->
+          <ng-container formArrayName="roomTypes" style="padding: 10px;">
+            <div *ngFor="let roomType of roomTypes.controls; let i = index" [formGroupName]="i">
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label>Room Type {{ i + 1 }}</label>
+                </div>
+  
+                <input type="text" formControlName="type_name" placeholder="Type name" class="boxsize" required>
+                <input type="number" formControlName="price" placeholder="Price" class="boxsize" required>
+                <input type="number" formControlName="no_of_rooms" placeholder="No of Rooms" class="boxsize" required>
+                <input type="number" formControlName="max_adults" placeholder="Max Adults" class="boxsize" required>
+                <input type="number" formControlName="markupPercentage" placeholder="Markup Percentage" class="boxsize" required>
+  
+                <button type="button" (click)="removeRoomType(i)" style="background-color:#d98d7e; margin-left: 10px;">Remove</button>
+              </div>
+            </div>
+          </ng-container>
+          <div *ngIf="mainForm.hasError('atLeastOneRoomType') && mainForm.touched" class="text-danger">
+            At least one room type must be added.
+          </div>
+          <button type="button" (click)="addRoomType()" style="background-color:rgb(98, 191, 194);  border-radius: 7px;">Add Room Type</button>
+          <br>
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" style="background-color: rgb(62, 93, 196);" [disabled]="mainForm.invalid">Submit</button>
+  
+        </form>
+      </div>
+      <div class="col-md-4">
+        <div style="width: 100%; position: relative;">
+        <img src="../../assets/contract.png" alt="Photo" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

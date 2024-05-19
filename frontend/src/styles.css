@@ -1,0 +1,6 @@
+
+.input-field {
+    width: 150px; /* Adjust the width as per your requirement */
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

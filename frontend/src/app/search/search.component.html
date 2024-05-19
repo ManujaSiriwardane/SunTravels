@@ -1,0 +1,39 @@
+<!-- search by hotel name -->
+<div>
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Enter hotel name">
+  <button (click)="searchContracts()" style="background-color: bisque; width: 100px; margin-left: 10px;">Search</button>
+</div>
+
+<div *ngIf="searchResults">
+  <p>Search Results</p>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Hotel Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Room Type Name</th>
+        <th>Price</th>
+        <th>No. of Rooms</th>
+        <th>Max Adults</th>
+        <th>Markup Percentage</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contract of searchResults">
+        <td>{{ contract.hotels.hotel_name }}</td>
+        <td>{{ contract.start_date | date }}</td>
+        <td>{{ contract.end_date | date }}</td>
+        <td>{{ contract.roomTypes[0].type_name }}</td> 
+        <td>{{ contract.roomTypes[0].price }}</td>
+        <td>{{ contract.roomTypes[0].no_of_rooms }}</td>
+        <td>{{ contract.roomTypes[0].max_adults }}</td>
+        <td>{{ contract.roomTypes[0].markupPercentage }}</td>
+        <td>
+          <button (click)="deleteContract(contract.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

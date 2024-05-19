@@ -1,0 +1,38 @@
+<!-- navbar -->
+<nav class="navbar navbar-expand-sm navbar-dark"  style="background-color:cadetblue;" >
+    <a class="navbar-brand" href="#">
+        <img src="../assets/Sun_Travels_Logo.png" alt="Sun Travels" width="50" style="padding-left: 10px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+        <li class = "nav-item">
+            <a routerLink="/" routerLinkActive="active" class="nav-link" style="color: black;">Home</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink="create-contract" routerLinkActive="active" class="nav-link"  style="color: black;">Add Contract</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink="search-contract" routerLinkActive="active" class="nav-link"  style="color: black;">Search Contract</a>
+        </li>
+    </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-bottom: 20px;">
+<router-outlet></router-outlet>
+</div>
+
+<footer class="footer" style="background-color: cadetblue;">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <span class="center-text">All rights Reserved 2023 @SunTravels</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  

@@ -1,0 +1,56 @@
+<!-- search by given fields in the assignment -->
+<div class="component" style="padding: 20px;">
+  <h4>Search Contracts with Hotel name</h4>
+    <app-search></app-search>
+  </div>
+  
+   
+
+<div class="container">
+  <div class="card" style="padding: 10px; background-color:cadetblue;">
+  <h4>Hotel Reservation Search</h4>
+  <form [formGroup]="searchForm">
+    <div class="form-row">
+      <div class="form-group col-md">
+    <label for="checkinDate">Check-in Date:</label>
+    <input type="date" id="checkinDate" formControlName="checkinDate" class="input-field">
+      </div>
+      <div class="form-group col-md">
+    <label for="numberOfNights">Number of Nights:</label>
+    <input type="number" id="numberOfNights" formControlName="numberOfNights" class="input-field">
+    </div>
+</div>
+    <div formArrayName="room">
+      <div *ngFor="let room of room.controls; let i = index" [formGroupName]="i">
+        <label for="numberOfAdults">Number of Adults in Room {{ i + 1 }}:</label>
+        <input type="number" id="numberOfAdults" formControlName="numberOfAdults" class="input-field">
+        <br >
+      </div>
+    </div>
+
+    <button type="button" (click)="addRoom()" style="background-color: rgb(100, 156, 156); border-radius: 10px;">Add Room</button>
+  
+    <button type="submit" (click)="search()" style="background-color: bisque; border-radius: 10px;">Search</button>
+  </form>
+</div>
+  <table *ngIf="searchResults.length > 0" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Hotel Name</th>
+        <th>Room Type</th>
+        <th>Final Price</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of searchResults">
+        <td>{{ result.hotelName }}</td>
+        <td>{{ result.roomTypeName }}</td>
+        <td>{{ result.finalPrice }}</td>
+        <td>{{ result.availability ? 'Available' : 'Not Available' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
